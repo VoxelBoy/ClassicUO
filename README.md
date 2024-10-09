@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.imgur.com/CgpwyIQ.png" width="200" height="200" >
+    <img src="https://i.imgur.com/CgpwyIQ.png" width="190" height="200" >
 </p>
 
 An open source implementation of the Ultima Online Classic Client.
@@ -14,79 +14,42 @@ Individuals/hobbyists: support continued maintenance and development via PayPal:
 <img src="https://img.shields.io/discord/458277173208547350.svg?logo=discord"
 alt="chat on Discord"></a>
 
-[![Build status](https://ci.appveyor.com/api/projects/status/qvqctcf8oss5bqh8?svg=true)](https://ci.appveyor.com/project/andreakarasho/classicuo)
-
+[![GitHub Actions Status](https://github.com/ClassicUO/ClassicUO/workflows/Build-Test/badge.svg)](https://github.com/ClassicUO/ClassicUO/actions)
+[![GitHub Actions Status](https://github.com/ClassicUO/ClassicUO/workflows/Deploy/badge.svg)](https://github.com/ClassicUO/ClassicUO/actions)
 
 # Introduction
-ClassicUO is an open source implementation of the Ultima Online Classic Client. This client is intended to emulate all standard client versions and is primarily tested against Ultima Online free shards. This client will not work on the official game shards at the moment.
+ClassicUO is an open source implementation of the Ultima Online Classic Client. This client is intended to emulate all standard client versions and is primarily tested against Ultima Online free shards.
 
 The client is currently under heavy development but is functional. The code is based on the [FNA-XNA](https://fna-xna.github.io/) framework. C# is chosen because there is a large community of developers working on Ultima Online server emulators in C#, because FNA-XNA exists and seems reasonably suitable for creating this type of game.
 
+![screenshot_2020-07-06_12-29-02](https://user-images.githubusercontent.com/20810422/208747312-04f6782f-3dc8-4951-b0a0-73d2305bbfca.png)
+
+
 ClassicUO is natively cross platform and supports:
-* Windows
-* Linux
-* MacOS
+* Browser [Chrome]
+* Windows [DirectX 11, OpenGL, Vulkan]
+* Linux   [OpenGL, Vulkan]
+* macOS   [Metal, OpenGL, MoltenVK]
 
 # Download & Play!
-Follow the [Wiki](https://github.com/andreakarasho/ClassicUO/wiki) to setup correctly ClassicUO
+| Platform | Link |
+| --- | --- |
+| Browser | [Play!](https://play.classicuo.org) |
+| Windows x64 | [Download](https://www.classicuo.eu/launcher/win-x64/ClassicUOLauncher-win-x64-release.zip) |
+| Linux x64 | [Download](https://www.classicuo.eu/launcher/linux-x64/ClassicUOLauncher-linux-x64-release.zip) |
+| macOS x64 | [Download](https://www.classicuo.eu/launcher/osx/ClassicUOLauncher-osx-x64-release.zip) |
 
-# Code building
-### Windows
-The binary produced will work on all supported platforms.
+Or visit the [ClassicUO Website](https://www.classicuo.eu/)
 
-You'll need [Visual Studio 2019](https://www.visualstudio.com/downloads/). The free community edition should be fine. Once that
-is installed:
-
-1. Open ClassicUO.sln in the root of the repository.
-
-2. Select "Debug" or "Release" at the top.
-
-3. Hit F5 to build. The output will be in the "bin/Release" or "bin/Debug" directory.
-
-### Linux
-Open a terminal instance and put the following commands:
-
-1. `sudo apt-get install mono-complete`
-
-2. `sudo apt-get install monodevelop`
-
-3. Select "Debug" or "Release" at the top.
-
-4. Hit F5 to build. The output will be in the "bin/Release" or "bin/Debug" directory.
-
-### MacOS
-All the commands should be executed in terminal. All global package installs should be done only if not yet installed.
-
-1. Install Homebrew, a package manager for macOS (if not yet installed):
-Follow instructions on https://brew.sh/
-
-2. Install Mono (https://www.mono-project.com/):
-`brew install mono`
-
-3. Install Paket, a dependency manager for .NET and mono projects (https://fsprojects.github.io/Paket/):
-`brew install paket`
-
-4. Navigate to ClassicUO root folder:
-`cd /your/path/to/ClassicUO`
-
-5. Initialize Paket environment:
-`paket init`
-
-6. Install required/missing dependencies:
-`paket add Newtonsoft.Json --version 12.0.2`
-
-7. Build:
-  - Debug version: `msbuild /t:Rebuild`
-  - Release version: `msbuild /t:Rebuild /p:Configuration=Release`
-
-8. Start ClassicUO via Mono (to properly set up all required constants use provided bash script):
-  - Debug version: `./bin/Debug/ClassicUO-mono.sh`
-  - Release version: `./bin/Release/ClassicUO-mono.sh`
-
-Other useful commands:
-- `msbuild /t:Clean`
-- `msbuild /t:Clean /p:Configuration=Release`
-- `msbuild /t:RestorePackages`
+# How to generate a release build
+```
+git clone --recursive https://github.com/ClassicUO/ClassicUO.git
+cd ClassicUO/scripts
+bash build-naot.sh
+```
+Binaries available in `bin/dist` folder
+> [!WARNING] 
+> To execute .sh scripts on Windows, use Git Bash which can be installed with Git itself: https://git-scm.com/download/win
 
 # Contribute
 Everyone is welcome to contribute! The GitHub issues and project tracker are kept up to date with tasks that need work.
@@ -99,6 +62,10 @@ The code itself has been written using the following projects as a reference:
 * [UltimaXNA](https://github.com/ZaneDubya/UltimaXNA)
 * [ServUO](https://github.com/servuo/servuo)
 
-This work is released under the GPLv3 license. This project does not distribute any copyrighted game assets. In order to run this client you'll need to legally obtain a copy of the Ultima Online Classic Client.
+Backend:
+* [FNA](https://github.com/FNA-XNA/FNA)
 
-Ultima Online(R) © 2020 Electronic Arts Inc. All Rights Reserved.
+This work is released under the BSD 4 license. This project does not distribute any copyrighted game assets. In order to run this client you'll need to legally obtain a copy of the Ultima Online Classic Client.
+Using a custom client to connect to official UO servers is strictly forbidden. We do not assume any responsibility of the usage of this client.
+
+Ultima Online(R) © 2024 Electronic Arts Inc. All Rights Reserved.
